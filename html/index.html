@@ -1,0 +1,700 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<title>天天乐抓娃娃</title>
+<link rel="stylesheet" type="text/css" href="imgs/base.css" />
+<style>
+    
+</style>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <div class="page" id="splash">
+            <img _src="imgs/splash_bg.jpg">
+        </div>
+
+        <div class="header">
+            <img src="imgs/title_bg.png">
+            <div class="nav">
+                <a class="goback" href="javascript:void(0)"><img src="imgs/back.png"></a>
+                <img class="logo" src="imgs/logo.png">
+            </div>
+        </div>
+
+        <div class="page" id="main">
+            <div id="page_rooms">
+                <img class="banner" _src="">
+                <ul class="roomList">
+                    <li style="display: none">
+                        <a href="javascript:goRoom('{deviceName}')">
+                            <img _src="imgs/product_frame.png">
+                            <img class="cover" src="{cover}">
+                            <span class="status"></span>
+                            <span class="text_bg">&nbsp</span>
+                        </a>
+                        <span class="name">{name}</span>
+                        <span class="price"><img class="coin" _src="imgs/coin.png">{price}</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="page_setting">
+                <div class="userinfo">
+                    <img class="avatar" src="">
+                    <div class="name"><span>&nbsp</span><br>ID:<span>&nbsp</span></div>
+                    <div class="dollcoin">
+                        我的娃娃币<br><span>&nbsp</span>
+                        <a class="recharge" href="javascript:goPay()">
+                            <img _src="imgs/recharge_btn.png">
+                        </a>
+                    </div>
+                </div>
+                <a class="menu_doll" href="javascript:void(0)">
+                    <span>我的娃娃</span>
+                    <img _src="imgs/more.png">
+                </a>
+                <a class="menu_record" href="javascript:void(0)">
+                    <span>抓取记录</span>
+                    <img _src="imgs/more.png">
+                </a>
+                <a class="menu_order" href="javascript:void(0)">
+                    <span>我的订单</span>
+                    <img _src="imgs/more.png">
+                </a>
+                <a class="menu_address" href="javascript:void(0)">
+                    <span>收货地址</span>
+                    <img _src="imgs/more.png">
+                </a>
+                <a class="menu_music" href="javascript:void(0)">
+                    <span>音乐</span>
+                    <img>
+                </a>
+                <a class="menu_sound" href="javascript:void(0)">
+                    <span>音效</span>
+                    <img>
+                </a>
+                <a class="menu_service" href="javascript:void(0)">客服</a>
+                <a class="menu_logout" href="javascript:void(0)">退出登陆</a>
+            </div>
+            <div class="footer">
+                <a class="ico_home" href="javascript:setMainPage(0)">
+                    <img _src="imgs/ico_home_active.png" >
+                </a>
+                <a class="ico_setting" href="javascript:setMainPage(1)">
+                    <img _src="imgs/ico_me_inactive.png" >
+                </a>
+            </div>
+        </div>
+        
+        <div class="page" id="wawaji">
+            <div class="mask"></div>
+            <audio name="click" _src="imgs/click-voice.mp3"></audio>
+            <div class="live" id="live">
+                <canvas class="camera_main"></canvas>
+                <canvas class="camera_sub" style="display: none"></canvas>
+                <span class="timeflag" id="timeflag"></span>
+                <a class="btn" href="javascript:toggleCamera()"><img _src="imgs/toggle_camera.png"></a>
+                <div class="player">
+                    <span>用户名</span>
+                    <div>
+                        <canvas></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="result">
+                <img class="lose" _src="imgs/play_lose.png">
+                <img class="win" _src="imgs/play_win.png">
+                <div class="dialog">
+                    <img class="bg" _src="imgs/play_result_bg.jpg">
+                    <a class="button close" href="javascript:closeResult()">
+                        <img _src="imgs/btn_close.png">
+                    </a>
+                    <p class="lose_text">很遗憾，就差一点点就抓到<br>娃娃啦，再接再厉！</p>
+                    <p class="win_text">恭喜您，抓到一个娃娃啦，<br>再接再厉！</p>
+                    <a class="button playagain" href="javascript:playAgain()">
+                        <img _src="imgs/play_lose_btn.png">
+                        <span class="timeflag" id="closeResultFlag"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="controler" id="controler">
+                <b class="button play_left">
+                    <img class="bg" _src="imgs/btn_play_bg.png">
+                    <img _src="imgs/ico_play_left.png">
+                    <img style="display: none" _src="imgs/btn_play_bg_touch.png">
+                    <img style="display: none" _src="imgs/ico_play_left_touch.png">
+                    <div></div>
+                </b>
+                <b class="button play_right">
+                    <img class="bg" _src="imgs/btn_play_bg.png">
+                    <img _src="imgs/ico_play_right.png">
+                    <img style="display: none" _src="imgs/btn_play_bg_touch.png">
+                    <img style="display: none" _src="imgs/ico_play_right_touch.png">
+                    <div></div>
+                </b>
+                <b class="button play_up">
+                    <img class="bg" _src="imgs/btn_play_bg.png">
+                    <img _src="imgs/ico_play_up.png">
+                    <img style="display: none" _src="imgs/btn_play_bg_touch.png">
+                    <img style="display: none" _src="imgs/ico_play_up_touch.png">
+                    <div></div>
+                </b>
+                <b class="button play_down">
+                    <img class="bg" _src="imgs/btn_play_bg.png">
+                    <img _src="imgs/ico_play_down.png">
+                    <img style="display: none" _src="imgs/btn_play_bg_touch.png">
+                    <img style="display: none" _src="imgs/ico_play_down_touch.png">
+                    <div></div>
+                </b>
+                <b class="button play_catch">
+                    <img class="bg" _src="imgs/play_catch.png">
+                    <img style="display: none" _src="imgs/play_catch_touch.png">
+                    <div></div>
+                </b>
+            </div>
+            <p class="waitResultText">等待游戏结果...</p>
+            <a class="button start" href="javascript:gameStart()">
+                <img _src="imgs/play_start.png">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="config.js"></script>
+<script>
+    var dm = null, mqttProxy = null, pages = {}, curPageName = '',  devices = [],
+    audios = {};
+
+
+
+
+
+    function getDeviceStatus(deviceName) {
+        var len = devices.length;
+        for (var i = 0; i < len; i ++) {
+            if (deviceName == devices[i].name)
+                return devices[i].status;
+        }
+        return '';
+    }
+
+    function goRoom(room) {
+        var status = getDeviceStatus(room);
+        if (status == 'error') {
+            if (curPageName == '' && getPageName() == room)
+                setActivePage(room);
+            alert('设备检修中, 请重新选择!');
+        } else {
+            //curRoom = room;//'wawaji-beijing-00000001';
+            var inx = room.replace('wawaji-beijing-', 'v');
+            dm.setDeviceName(room);
+            dm.setCamera(0, videos[inx].main, videos[inx].sub);
+            dm.setStatus((status == MachineStatus.ready) ? MachineStatus.ready : MachineStatus.waitStart);
+            setActivePage(room, 500);
+        }
+    }
+
+    function updateRoomList() {
+        var ul = document.getElementById('page_rooms').getElementsByTagName('ul')[0];
+        var len = ul.children.length;
+        for (var i = len - 1; i > 0; i --)
+            ul.removeChild(ul.children[i]);
+
+        hljoy.getRoomList({
+            onload: function() {
+                var res = JSON.parse(this.responseText);
+                if (res) {
+                    var ul, li, room, data, html, status ,device;
+                    ul = document.getElementById('page_rooms').getElementsByTagName('ul')[0];
+                    for (var i = 0; i < res.data.length; i ++) {
+                        room = res.data[i];
+                        data = {
+                            deviceName: room.Device.deviceName,
+                            cover: '',
+                            name: room.Product.Name,
+                            price: room.Product.Price
+                        }
+                        data.cover = cdnRoot + room.Product.PicUrl;
+                        data.price += '/次';
+                        html = ul.children[0].innerHTML;
+                        li = document.createElement('li');
+                        ul.appendChild(li);
+                        for (var key in data) {
+                            html = html.replace('{'+key+'}', data[key]);
+                        }
+                        li.innerHTML = html;
+                        device = {
+                            name: room.Device.deviceName,
+                            status: '',
+                            statusElement: null
+                        };
+                        device.statusElement = li.getElementsByTagName('span')[0];
+                        devices.push(device);
+                        status = (room.Device.deviceStatus != 'error' && room.Device.deviceStatus != 'ready') ? 'playing' : room.Device.deviceStatus;
+                        updateDeviceStatus(room.Device.deviceName, status);
+                    }
+                    setTimeout('initPage("wawaji")', 50);
+                    if (curPageName == 'splash')
+                        setActivePage('main', 500);
+                }
+            },
+            onerror: function() {
+                alert('初始化设备列表失败!');
+            }
+        });
+    }
+
+
+    function Page(id) {
+        var _element = document.getElementById(id),
+        _status = '',
+        _resTotal = 0,
+        _resProgress = 0,
+        _resOnProgress = null;
+
+        function resLoadComplete() {
+            _resProgress ++;
+            if (_resOnProgress)
+                _resOnProgress(_resProgress, _resTotal);
+        }
+
+        this.init = function(onProgress) {
+            if (_status == '') {
+                this.setStatus('loading');
+
+                if (typeof onProgress !== 'undefined')
+                    _resOnProgress = onProgress;
+                    
+                var src, imgs = _element.getElementsByTagName('img'),
+                len = imgs.length;
+
+                //计算加载图片数量
+                for (var i = 0; i < len; i ++) {
+                    src = imgs[i].getAttribute('_src');
+                    if (src) _resTotal ++;
+                }
+
+                //计算加载脚本数量
+                if (assets[_element.id]) {
+                    if (assets[_element.id].scripts) {
+                        _resTotal += assets[_element.id].scripts.length;
+                    }
+                }
+
+                var medias = _element.getElementsByTagName('audio'),
+                len = medias.length;
+                //加载媒体
+                for (var i = 0; i < len; i ++) {
+                    src = medias[i].getAttribute('_src');
+                    if (src) {
+                        medias[i].removeAttribute('_src');
+                        medias[i].src = src;
+                        audios[medias[i].getAttribute('name')] = medias[i];
+                    }
+                }
+                
+                
+                //加载图像
+                len = imgs.length;
+                for (var i = 0; i < len; i ++) {
+                    src = imgs[i].getAttribute('_src');
+                    if (src) {
+                        imgs[i].removeAttribute('_src');
+                        imgs[i].onload = resLoadComplete;
+                        imgs[i].src = src;
+                    }
+                }
+
+                //加载脚本
+                if (assets[_element.id]) {
+                    if (assets[_element.id].scripts) {
+                        var s, scripts = assets[_element.id].scripts;
+                        len = scripts.length;
+
+                        for (var i = 0; i < len; i ++) {
+                            s = document.createElement('script');
+                            s.onload = resLoadComplete;
+                            s.src = scripts[i];
+                            document.body.appendChild(s);
+                        }
+                    }
+                }
+
+                //加载媒体
+                if (assets[_element.id]) {
+                    if (assets[_element.id].media) {
+                        var a, media = assets[_element.id].media;
+                        len = media.length;
+
+                        for (var i = 0; i < len; i ++) {
+                            audios[media[i].name] = new Audio();
+                            audios[media[i].name].onload = resLoadComplete;
+                            audios[media[i].name].src = media[i].src;
+                        }
+                    }
+                }
+            }
+        }
+
+        this.isComplete = function() {
+            return (_status != '') && (_resProgress == _resTotal);
+        }
+
+        this.getElement = function() {
+            return _element;
+        }
+
+        this.setStatus = function(value) {
+            if (value != _status) {
+                _status = value;
+                _element.className = 'page ' + _status;
+            }
+        }
+    }
+
+    function mainPageScroll(pos, offset, delay) {
+        if (typeof delay === 'undefined' || delay <= 0) {
+            var e = document.getElementById('wrapper');
+            var scrollLeft = e.scrollLeft;
+            if (scrollLeft > pos) {
+                var os = parseInt((scrollLeft - pos) * offset);
+                if (os < 10) os = 10;
+                scrollLeft -= os;
+                if (scrollLeft <= pos) {
+                    scrollLeft = pos;
+                } else {
+                    mainPageScroll(pos, offset, 20);
+                }
+            } else {
+                var os = parseInt((pos - scrollLeft) * offset);
+                if (os < 10) os = 10;
+                scrollLeft += os;
+                if (scrollLeft >= pos) {
+                    scrollLeft = pos;
+                } else {
+                    mainPageScroll(pos, offset, 20);
+                }
+            }
+            e.scrollLeft = scrollLeft;
+        } else {
+            setTimeout('mainPageScroll('+pos+','+offset+')', delay);
+        }
+    }
+
+    function setMainPage(inx) {
+        var e = document.getElementById('wrapper');
+        var pos = inx * e.clientWidth;
+        mainPageScroll(pos, 0.5, 50);
+    }
+
+    function controlerButtonTouchStart(event) {
+        var imgs = this.getElementsByTagName('img');
+        if (imgs.length == 2) {
+            imgs[1].style.display = 'block';
+        } else if (imgs.length == 4) {
+            imgs[2].style.display = 'block';
+            imgs[3].style.display = 'block';
+        }
+        if (dm) {
+            var inx = this.className.indexOf('_');
+            if (inx > 0) {
+                var cmd = this.className.substr(inx+1);
+                switch (cmd) {
+                    case 'left':
+                        dm.moveLeft();
+                        break;
+                    case 'right':
+                        dm.moveRight();
+                        break;
+                    case 'up':
+                        dm.moveBack();
+                        break;
+                    case 'down':
+                        dm.moveFornt();
+                        break;
+                    case 'catch':
+                        dm.catch();
+                        break;
+                }
+                if (audios['click'])
+                    audios['click'].play();
+            }
+        }
+    }
+
+    function controlerButtonTouchEnd(event) {
+        var imgs = this.getElementsByTagName('img');
+        if (imgs.length == 2) {
+            imgs[1].style.display = 'none';
+        } else if (imgs.length == 4) {
+            imgs[2].style.display = 'none';
+            imgs[3].style.display = 'none';
+        }
+        if (dm && this.className.indexOf('catch') <= 0)
+            dm.stopMove();
+    }
+
+    function waitCloseResult(time) {
+        if (time-- <= 0) {
+            closeResult();
+        } else {
+            document.getElementById('closeResultFlag').innerHTML = '('+time+')';
+            setTimeout('waitCloseResult('+time+')', 1000);
+        }
+    }
+
+    function updateDeviceStatus(deviceName, status) {
+        if (status == 'result')
+            status = 'ready';
+        else if (status == 'catching')
+            status = 'playing';
+        for (var i = 0; i < devices.length; i ++) {
+            if (deviceName == devices[i].name) {
+                devices[i].status = status;
+                if (devices[i].statusElement) {
+                    var element = devices[i].statusElement;
+                    if (status == 'error') {
+                        element.innerHTML = '<b style="color:red">●</b>&nbsp检修中';
+                    } else if (status == 'ready') {
+                        element.innerHTML = '<b>●</b>&nbsp空闲';
+                    } else {
+                        element.innerHTML = '<b>●</b>&nbsp游戏中';
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    function deviceMessage(message) {
+        var destinationName = message.destinationName;
+        var inx = destinationName.lastIndexOf('/');
+        if (inx > 0) {
+            var deviceName = destinationName.substr(inx+1);
+            var payload = JSON.parse(message.payloadString);
+            if (payload.messageType == 'status')
+                updateDeviceStatus(deviceName, payload.status);
+
+            if (dm && deviceName == dm.getDeviceName())
+                dm.deviceMessage(message, payload);
+        }
+    }
+
+    function initPage(pageName) {
+        if (! pages[pageName]) {
+            pages[pageName] = new Page(pageName);
+            pages[pageName].init(
+                function(progress, total) {
+                    if (progress == total) {
+                        if (pageName == 'wawaji') {
+                            var bs = document.getElementById('controler').getElementsByTagName('b');
+                            for (var i = 0; i < bs.length; i ++) {
+                                bs[i].addEventListener('touchstart', controlerButtonTouchStart);
+                                bs[i].addEventListener('touchend', controlerButtonTouchEnd);
+                            }
+                            var deviceName = 'player-h5-' + facade.userId;
+                            hljoy.playerLogin(
+                                deviceName,
+                                {
+                                    onload: function() {
+                                        var res = JSON.parse(this.responseText);
+                                        mqttProxy = new MqttProxy(facade, res.data.ProductKey, res.data.DeviceId, res.data.DeviceName, res.data.DeviceSecret, res.data.DeviceName,
+                                            function() {
+                                                if (!dm) {
+                                                    dm = new DollMachine('', mqttProxy, hljoy);
+                                                    dm.addEventListener(MachineEvent.updateStatus, function(status) {
+                                                        pages['wawaji'].setStatus(status);
+                                                    });
+                                                    dm.addEventListener(MachineEvent.updateGameTime, function(value) {
+                                                        document.getElementById('timeflag').innerHTML = value + '"';
+                                                    });
+                                                    for (var i = 0; i < devices.length; i ++)
+                                                        mqttProxy.subscribe(devices[i].name, deviceMessage);
+                                                    if (curPageName == '') {
+                                                        var pageName = getPageName();
+                                                        if (pageName.split('-')[0] == 'wawaji')
+                                                            goRoom(pageName);
+                                                    }                                                        
+                                                }
+                                            },
+                                            function() {
+                                                alert('连接设备失败!');
+                                        });
+                                    },
+                                    onerror: function() {
+                                        alert('连接设备失败!');
+                                    }
+                            });
+                        } else if (pageName == 'main') {
+                            setTimeout('updateRoomList()', 50);
+                            document.getElementById('wrapper').addEventListener('touchend', function() {
+                                if (this.scrollLeft > 0) {
+                                    if (this.scrollLeft > this.scrollWidth / 4) {
+                                        mainPageScroll(parseInt(this.scrollWidth/2), 0.5, 0);
+                                    } else {
+                                        mainPageScroll(0, 0.5, 0);
+                                    }
+                                }
+                            });
+                            updatePlayerInfo();
+                        } else if (pageName == 'splash') {
+                            setTimeout('initPage("main")', 50);
+                        }
+                        if (pageName == curPageName)
+                            document.body.className = pageName.replace(/-/g, ' ');
+                    }
+                }
+            )
+            return true;
+        }
+        return false;
+    }
+
+    function setActivePage(pageName, delay) {
+        if (typeof delay === 'undefined' || delay <= 0) {
+            if (curPageName != pageName) {
+                if (dm && curPageName.split('-')[0] == 'wawaji')
+                    dm.close();
+
+                curPageName = pageName;
+                pageName = pageName.split('-')[0];
+                    
+                if (!initPage(pageName)) {
+                    document.body.className = curPageName.replace(/-/g, ' ');
+                }
+                var oldPageName = getPageName();
+                location.href = (oldPageName == '') ? ('#' + curPageName) : location.href.replace('#' + oldPageName, '#' + curPageName);
+            }
+        } else {
+            setTimeout('setActivePage("' + pageName + '")', delay);
+        }
+    }
+
+    function gameStart() {
+        if (dm) {
+            dm.start();
+        }
+    }
+
+    function closeResult() {
+        if (getDeviceStatus(dm.getDeviceName()) == MachineStatus.ready) {
+            dm.setStatus(MachineStatus.ready);
+        } else {
+            dm.setStatus(MachineStatus.waitStart);
+        }
+    }
+
+    function playAgain() {
+        if (dm) {
+            if (getDeviceStatus(dm.getDeviceName()) == MachineStatus.ready) {
+                gameStart();
+            } else {
+                dm.setStatus(MachineStatus.waitStart);
+            }
+        }
+    }
+
+    function getParam(key) {
+        var inx = location.href.lastIndexOf('?' + key + '=');
+        if (inx <= 0)
+            inx = location.href.lastIndexOf('&' + key + '=');
+        if (inx > 0) {
+            inx += key.length + 1;
+            var inx2 = location.href.indexOf('&', inx);
+            if (inx2 < inx)
+                inx2 = location.href.indexOf('#', inx);
+            return (inx2 > inx) ? location.href.substr(inx+1, inx2) : location.href.substr(inx+1);
+        }
+        return '';
+    }
+
+    function getPageName() {
+        var pageName = '';
+        var inx = location.href.lastIndexOf('#');
+        if (inx > 0) {
+            var inx2 = location.href.lastIndexOf('?');
+            pageName = (inx2 > inx) ? location.href.substr(inx+1, inx2) : location.href.substr(inx+1);
+        }
+        return pageName;
+    }
+
+    window.onhashchange = function() {
+        var pageName = getPageName();
+        if (pageName != '')
+            setActivePage(pageName);
+    }
+
+    window.onresize = function() {
+        var curScale = document.body.clientWidth / defaultUIWidth;
+        document.body.style.fontSize = parseInt(curScale * defaultFontSize) + 'px';
+    }
+
+    document.onselectstart = document.ondragstart = function() {
+        return false;
+    }
+
+    document.body.onselectstart = document.body.ondragstart = function() {
+        return false;
+    }
+
+    document.oncontextmenu = document.body.oncontextmenu = function() {
+        return false;
+    }
+
+    function init() {
+        var pageName = getPageName();
+        var token = getParam('token');
+        if (token != '') {
+            localStorage.setItem('hljoy-token', token);
+            var inx = location.href.indexOf('?');
+            if (inx >= 0) {
+                var href = location.href.substr(0, inx);
+                location.href = (pageName == '') ? href : href + '#' + pageName;
+            }
+        } else {
+            token = localStorage.getItem('hljoy-token');
+            if (token) {
+                facade.token = token;
+                facade.userId = parseInt(token.split(':')[0]);
+                if (pageName.split('-')[0] == 'wawaji')
+                    initPage('main');
+                else
+                    setActivePage((pageName == '') ? 'splash' : pageName);    
+                window.onresize();
+            } else {
+                alert('登陆失败!');
+            }
+        }
+    }
+
+    function updatePlayerInfo(info) {
+        if (typeof info !== 'undefined' && info) {
+            var e = document.getElementById('page_setting');
+            var imgs = e.getElementsByTagName('img');
+            imgs[0].src = info.userPicUrl;
+            var spans = e.getElementsByTagName('span');
+            spans[0].innerHTML = info.userName;
+            spans[1].innerHTML = facade.userId;
+            spans[2].innerHTML = info.userCoins;
+        } else {
+            hljoy.getPlayerInfo(
+                {
+                    onload: function() {
+                        var res = JSON.parse(this.responseText);
+                        if (res && res.data) {
+                            updatePlayerInfo(res.data);
+                        } else
+                            alert('获取用户信息错误, 请重新打开!');
+                    },
+                    onerror: function() {
+                        alert('获取用户信息失败, 请重新打开!');
+                    }
+                }
+            )
+        }
+    }
+
+    init();
+
+</script>

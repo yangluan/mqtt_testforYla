@@ -1,0 +1,9 @@
+host = 'mIwXobA2Xs3.iot-as-mqtt.cn-shanghai.aliyuncs.com';// 设置当前用户的接入点域名，接入点获取方法请参考接入准备章节文档，先在控制台申请实例
+port = 80;//WebSocket协议服务端口，如果是走HTTPS，设置443端口
+topic = '/mIwXobA2Xs3/test/update';//需要操作的Topic
+useTLS = false;//是否走加密HTTPS，如果走HTTPS，设置为true
+accessKey = 'pXxrwOqHHrEzpnZ3';//账号的AccessKey，在阿里云控制台查看
+secretKey = '2IiQbEhuowYD2axg2A6yOgUT3QqMmu';//账号的的SecretKey，在阿里云控制台查看
+cleansession = true;
+groupId='GID_XXXX';
+clientId=groupId+'@@@XXXX';//GroupId@@@DeviceId，由控制台申请的Group ID和自己指定的Device ID组合构成

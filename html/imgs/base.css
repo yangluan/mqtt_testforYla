@@ -1,0 +1,386 @@
+html, body, .page, .wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    background-color: #48bdf3;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #333;
+    display: block;
+    text-decoration: none;
+}
+img {
+    border: 0;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+audio {
+    display: none;
+}
+.page {
+    display: none;
+    overflow: auto;
+}
+.mask {
+    background-color: #000;
+    opacity: 0.75;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+#splash img {
+    min-height: 100%;
+}
+.header {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.nav .goback {
+    display: none;
+    width: 11%;
+    margin-top: 6%;
+    margin-left: 2%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.nav .logo {
+    width: 42%;
+    height: auto;
+    margin: auto;
+}
+#main {
+    width: 200%;
+}
+#page_rooms, #page_setting {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+}
+#page_setting a {
+    background-color: #4ab5ed;
+    color: #fff;
+    line-height: 120%;
+    position: relative;
+    width: 92%;
+    padding: 2% 4%;
+}
+#page_setting a img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1%;
+    margin-right: 3%;
+    width: 4%;
+}
+#page_setting .menu_logout {
+    color: #f00;
+    text-align: center;
+}
+.userinfo {
+    background-color: #4ab5ed;
+    color: #fff;
+    margin-top: 32%;
+    margin-bottom: 2%;
+    padding: 6% 20%;
+    position: relative;
+}
+.userinfo .dollcoin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 2%;
+    text-align: center;
+    width: 22%;
+}
+.userinfo .avatar {
+    background-color: #2a92f9;
+    position: absolute;
+    left: 4%;
+    top: 24%;
+    min-height: 50%;
+    max-height: 50%;
+    width: 13%;
+}
+#page_setting .recharge {
+    width: 96%;
+}
+#page_setting .menu_address {
+    margin-bottom: 2%;
+}
+#page_setting .menu_service {
+    margin: 2% 0;
+}
+.menu_doll, .menu_record, .menu_order, .menu_music {
+    border-bottom: 1px solid #46c4fe;
+}
+#page_setting .recharge img {
+    width: 100%;
+}
+.roomList {
+    background-color: rgb(151, 205, 255);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 16%;
+}
+.roomList li {
+    display: inline-block;
+    width: 39%;
+    margin: 5%;
+}
+.roomList li a {
+    width: 100%;
+    position: relative;
+}
+.roomList li a span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 12%;
+    z-index: 2;
+}
+.roomList li a .text_bg {
+    background-color: #fff;
+    opacity: 0.7;
+    z-index: 1;
+}
+.roomList li span {
+    display: block;
+    text-align: center;
+    line-height: 180%;
+}
+.roomList .cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 88%;
+    margin: 6%;        
+    z-index: 0;
+}
+.roomList .status b {
+    color: greenyellow;
+}
+.roomList .coin {
+    display: inline-block;
+    width: 18%;
+    vertical-align: middle;
+}
+.live {
+    background-color: #333;
+    width: 96%;
+    height: 66%;
+    margin: auto;
+    position: relative;
+    z-index: 0;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+}
+.live .player {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 38%;
+    height: 36%;
+    margin: 6%;
+    display: none;
+}
+.live .btn {
+    width: 10%;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 48%;
+    z-index: 99;
+}
+.live canvas {
+    width: 160%;
+    height: 100%;
+}
+.live .timeflag {
+    color: #fff;
+    font-size: 135%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10%;
+    margin: 20% 12%;
+}
+.button {
+    display: block;
+}
+.controler {
+    display: none;
+    position: relative;
+    margin-top: -22%;
+    z-index: 1;
+}
+.controler .button {
+    position: absolute;
+    width: 19%;
+}
+.controler .button img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.controler .button .bg {
+    position: relative;
+}
+.controler .button div {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    border-radius: 48%;
+}
+.controler .play_left {
+    margin-top: 14%;
+    margin-left: 10%;
+}
+.controler .play_right {
+    margin-top: 14%;
+    margin-left: 46%;
+}
+.controler .play_up {
+    margin-left: 28%;
+}
+.controler .play_down {
+    margin-left: 28%;
+    margin-top: 30%;
+}
+.controler .play_catch {
+    right: 0;
+    margin-right: 7%;
+    margin-top: 14%;
+}
+.start {
+    display: none;
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+}
+.waitStart .start {
+    display: block;
+    filter: brightness(0.75) grayscale(1);
+}
+.waitResultText {
+    color: #fff;
+    display: none;
+    text-align: center;
+    font-size: 120%;
+    line-height: 150%;
+}
+.wawaji .result {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    margin-top: 9%;
+}
+.wawaji .result .dialog {
+    width: 96%;
+    margin: auto;
+    position: relative;
+}
+.wawaji .result .dialog .bg {
+    border-radius: 4%;
+}
+.wawaji .result .close {
+    width: 12%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: -2%;
+}
+.wawaji .result .lose_text, .wawaji .result .win_text {
+    position: absolute;
+    left: 8%;
+    top: 18%;
+    color: #3ec2f2;
+    font-size: 150%;
+    width: 86%;
+    display: none;
+}
+.wawaji .result .dialog .playagain {
+    position: absolute;
+    left: 25%;
+    bottom: 5%;
+    width: 50%;
+}
+.wawaji .playagain .timeflag {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35%;
+    text-align: center;
+    line-height: 230%;
+    font-size: 150%;
+}
+.wawaji .result .lose, .wawaji .result .win {
+    display: none;
+}    
+.splash #splash, 
+.main #main, .main .header, .main .footer,
+.wawaji #wawaji, .wawaji .header,
+.wawaji .playing .controler, .wawaji .ready .start,
+.waitpay .mask,
+.gameWin .mask, .gameLose .mask,
+.gameWin .result, .gameWin .result .win, .gameWin .result .win_text,
+.gameLose .result, .gameLose .result .lose, .gameLose .result .lose_text,
+.catching .waitResultText   {
+    display: block;
+}
+.banner, .live {
+    margin-top: 28%;
+}
+.footer {
+    background-color: #fff;
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer a {
+    display: inline-block;
+    margin: 2%;
+    margin-left: 25%;
+    width: 10%;
+}
